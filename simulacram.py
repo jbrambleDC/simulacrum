@@ -71,20 +71,24 @@ def zip_data(ty, length):
     res.append(f.name())
   return pd.Series(res)
 
-def create(cols=None, types=None, coltypes=None, length):
+def create(length, cols=None, types=None, coltypes=None):
   series_res = {}
-  ops = {'num': num_data, 'int': num_int, 'norm': norm_data, 'exp': exp_data, 'bin': binom_data}
+  ops = {'num': num_data, 'int': num_int, 'norm': norm_data, 'exp': exp_data, 'bin': binom_data, 'pois': poisson_data, 'txt':\
+      text_data, 'name': name_data, 'addr': address_data, 'zip': zip_data}
 
   if cols and types and coltypes:
     logging.error('coltypes should not be defined when cols and types are defined')
+
   if (cols and not types) or (types and not cols):
     logging.error('cols and types must both be defined together, as lists')
+
   if (cols and types):
     validate_types(types)
     if len(cols) != len(types):
       logging.error('cols and types must be lists of equal length')
     for i in len(cols):
       series_res[col[i]] = ops[types[i]['type']](types[i], length)
+
   else:
     if not coltypes:
       logging.error('please define either cols and types or coltypes')
@@ -94,7 +98,9 @@ def create(cols=None, types=None, coltypes=None, length):
   return pd.DataFrame(series_res)
 
 def main():
-  pass
+  test = {'entries': {'type': 'exp', 'lam': 0.5}, 'names': {'type': 'name'}, 'salaries': {'type': 'norm', 'mean': 55000, 'sd': 20000}}
+  res = create(100, coltypes=test)
+  print res.head(100)
 
 if __name__ == '__main__':
   main()
