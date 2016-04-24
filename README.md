@@ -27,3 +27,10 @@ see how to properly pass the correct keys and values. Possible types are as foll
 
 Each key corresponds to a possible type, and the value is the function called in the source.
 
+###TODO
+- Add a function for fake date generation
+- Add a function for fake coordinates
+- Add a function for fake zipcodes
+- Add a function for fake categorical variables
+- Add Try Except blocks to all functions to log errors when params passed in dict dont match expected params
+
