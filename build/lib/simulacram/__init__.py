@@ -56,7 +56,7 @@ def cats_data(ty, length):
   return pd.Series(res)
 
 def date_data(ty, length)
-#TODO add error handling and validation for date strings passed
+  #TODO add error handling and validation for date strings passed
   res = []
   f = Faker()
   begin = datetime.strptime(ty['begin'], '%Y-%m-%d')
@@ -85,8 +85,17 @@ def zip_data(ty, length):
 
 def create(length, cols=None, types=None, coltypes=None):
   series_res = {}
-  ops = {'num': num_data, 'int': num_int, 'norm': norm_data, 'exp': exp_data, 'bin': binom_data, 'pois': poisson_data, 'txt':\
-      text_data, 'name': name_data, 'addr': address_data, 'zip': zip_data}
+  ops = {'num': num_data,
+         'int': num_int,
+         'norm': norm_data,
+         'exp': exp_data,
+         'bin': binom_data,
+         'pois': poisson_data,
+         'txt': text_data,
+         'name': name_data,
+         'addr': address_data,
+         'zip': zip_data,
+         'date': date_data}
 
   if cols and types and coltypes:
     logging.error('coltypes should not be defined when cols and types are defined')
@@ -110,7 +119,10 @@ def create(length, cols=None, types=None, coltypes=None):
   return pd.DataFrame(series_res)
 
 def main():
-  test = {'entries': {'type': 'exp', 'lam': 0.5}, 'names': {'type': 'name'}, 'salaries': {'type': 'norm', 'mean': 55000, 'sd': 20000}}
+  test = {'entries': {'type': 'exp', 'lam': 0.5},
+          'names': {'type': 'name'},
+          'salaries': {'type': 'norm', 'mean': 55000, 'sd': 20000}}
+
   res = create(100, coltypes=test)
   print res.head(100)
 
