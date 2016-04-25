@@ -2,6 +2,7 @@ import pandas as pd
 from faker import Faker
 import logging
 import numpy as np
+from datetime import datetime
 
 def num_data(ty, length):
   a = ty['min']
@@ -52,6 +53,17 @@ def cats_data(ty, length):
   f = Faker()
   for _ in range(0, length - 1):
     res.append(f.name())
+  return pd.Series(res)
+
+def date_data(ty, length)
+#TODO add error handling and validation for date strings passed
+  res = []
+  f = Faker()
+  begin = datetime.strptime(ty['begin'], '%Y-%m-%d')
+  end = datetime.strptime(ty['end'], '%Y-%m-%d')
+  for _ in range(0, length - 1):
+    res.append(f.date_time_between_dates(datetime_start=begin,
+                                         datetime_end=end)
   return pd.Series(res)
 
 def coords_data(ty, length):
