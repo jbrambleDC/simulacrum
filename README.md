@@ -28,7 +28,7 @@ see how to properly pass the correct keys and values. Possible types are as foll
 Each key corresponds to a possible type, and the value is the function called in the source.
 
 ###TODO
-- Add a function for fake date generation ( `fake.date_time_between(start_date="-30y", end_date="now")` )
+- Add a error handling and validation for date_data function
 - Add a function for fake coordinates
 - Add a function for fake zipcodes
 - Add a function for fake categorical variables
