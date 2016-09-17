@@ -49,4 +49,5 @@ Each key corresponds to a possible type, and the value is the function called in
 - Add a function for fake zipcodes
 - Add a function for fake categorical variables
 - Add Try Except blocks to all functions to log errors when params passed in dict dont match expected params
+- Add "API" for creating the coltypes dictionary
 
