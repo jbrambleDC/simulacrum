@@ -24,6 +24,7 @@ class DataSet:
     def norm_data(self, ty, length):
         if len(ty) == 1:
             return pd.Series(np.random.standard_normal(size=length))
+
         mean = ty['mean']
         sd = ty['sd']
         return pd.Series(np.random.normal(mean, sd, length))
