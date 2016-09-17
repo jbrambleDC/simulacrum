@@ -18,9 +18,10 @@ hopefully engineers scalability and foresight for companies with slow data veloc
 
 ###Installation
 
-`$ git clone https://github.com/jbrambleDC/simulacram.git && cd simulacram`
-
-`$ python setup.py install`
+```
+$ git clone https://github.com/jbrambleDC/simulacram.git && cd simulacram
+$ python setup.py install
+```
 
 ###Usage
 To create a fake pandas dataframe consisting of 100 rows. we would do the following:
