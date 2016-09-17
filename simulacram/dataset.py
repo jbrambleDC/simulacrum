@@ -8,6 +8,9 @@ class DataSet:
     def __init__(self, length, **kwargs):
         self.data = self.create(length, **kwargs)
 
+    def get_data(self):
+        return self.data
+
     def num_data(self, ty, length):
         a = ty['min']
         b = ty['max']
