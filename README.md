@@ -5,15 +5,15 @@ generalization needs to be tested. This is still a work in Progress. right now n
 statistical distribution so long as the proper statistical parameters are included with the type key in the dictionary.
 
 Simulacram fulfills the following use cases:
-- When data is needed for a tutorial, in order to train a model perfectly.
+- When data is needed for a tutorial, in order to train a model perfectly
 - When real data that is well understood cannot be gathered fast enough, but can be simulated quickly
-- to develop test case datasets for testing machine learning pipelines and applications on more generalizable data.
+- to develop test case datasets for testing machine learning pipelines and applications on more generalizable data
 
 
 For Instance, companies that operate primarily as brick and mortars cannot gather data at
 the same rate as ecommerce companies typically. Gathering customer data may take months. Therefore the data to develop machine learning applications may not exist at
 present but the company may have a general understanding of the shape of this data, and can thus simulate it. A model can be
-trained on this simulated data and a machine learning application can be developed in parallel of gathering real data! This
+trained on this simulated data and a machine learning application can be developed in parallel to gathering real data! This
 hopefully engineers scalability and foresight for companies with slow data velocity.
 
 ###Installation
