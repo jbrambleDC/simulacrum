@@ -1,10 +1,10 @@
-###Simulacram (Spelled Wrong on Purpose!)
-Simulacram is a simple way to pass in a dictionary object, with column names and corresponding data types and output a pandas
+###Simulacrum
+Simulacrum is a simple way to pass in a dictionary object, with column names and corresponding data types and output a pandas
 DataFrame of random data. This is great for creating a fake data set or testing a data science script whose validity through
 generalization needs to be tested. This is still a work in Progress. right now numerical data can be made to fit a common
 statistical distribution so long as the proper statistical parameters are included with the type key in the dictionary.
 
-Simulacram fulfills the following use cases:
+simulacrum fulfills the following use cases:
 - When data is needed for a tutorial, in order to train a model perfectly
 - When real data that is well understood cannot be gathered fast enough, but can be simulated quickly
 - to develop test case datasets for testing machine learning pipelines and applications on more generalizable data
@@ -19,14 +19,14 @@ hopefully engineers scalability and foresight for companies with slow data veloc
 ###Installation
 
 ```
-$ pip install simulacram
+$ pip install simulacrum
 ```
 
 ###Usage
 To create a fake pandas dataframe consisting of 100 rows. we would do the following:
 ```python
 
-import simulacram as sm
+import simulacrum as sm
 
 test = {'entries': {'type': 'exp', 'lam': 0.5},
         'names': {'type': 'name'},
@@ -46,7 +46,7 @@ We can also use the ColTypes class to create the coltypes dict with function cal
 
 ```python
 
-import simulacram as sm
+import simulacrum as sm
 
 col_types = sm.ColTypes()
 col_types.add_coltype('salaries', 'norm', mean=50000, sd=1000)
