@@ -19,8 +19,7 @@ hopefully engineers scalability and foresight for companies with slow data veloc
 ###Installation
 
 ```
-$ git clone https://github.com/jbrambleDC/simulacram.git && cd simulacram
-$ python setup.py install
+$ pip install simulacram
 ```
 
 ###Usage
@@ -43,11 +42,22 @@ see how to properly pass the correct keys and values. Possible types are as foll
 
 Each key corresponds to a possible type, and the value is the function called in the source.
 
+We can also use the ColTypes class to create the coltypes dict with function calls.
+
+```python
+
+import simulacram as sm
+
+col_types = sm.ColTypes()
+col_types.add_coltype('salaries', 'norm', mean=50000, sd=1000)
+
+data_set = sm.create(1000, coltypes=col_types.get_coltypes())
+```
+
 ###TODO
 - Add a error handling and validation for date_data function
 - Add a function for fake coordinates
 - Add a function for fake zipcodes
 - Add a function for fake categorical variables
 - Add Try Except blocks to all functions to log errors when params passed in dict dont match expected params
-- Add "API" for creating the coltypes dictionary
 
