@@ -10,4 +10,5 @@ setup(name = 'simulacram',
       license = 'MIT',
       packages = ['simulacram'],
       keywords = ['simulation', 'data', 'data science'],
+      install_requires = ['pandas', 'faker'],
       zip_safe = False)
