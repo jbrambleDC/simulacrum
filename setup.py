@@ -1,10 +1,10 @@
 from setuptools import setup
 
 setup(name = 'simulacrum',
-      version = '0.2.1',
+      version = '0.2.3',
       description = 'Create Pandas DataFrames of simulated data with columns following statistical distributions or categorical datatypes',
       url = 'https://github.com/jbrambleDC/simulacrum',
-      download_url = 'https://github.com/jbrambleDC/simulacrum/tarball/0.2.1',
+      download_url = 'https://github.com/jbrambleDC/simulacrum/tarball/0.2.3',
       author = 'Jordan Bramble',
       author_email = 'jordanbramble@gmail.com',
       license = 'MIT',
