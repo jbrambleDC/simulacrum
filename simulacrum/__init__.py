@@ -5,5 +5,5 @@ import numpy as np
 from datetime import datetime
 
 from .dataset import DataSet
-from simdata import *
-from coltypes import ColTypes
+from .simdata import create
+from .coltypes import ColTypes
