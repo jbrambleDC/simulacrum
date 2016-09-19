@@ -61,3 +61,11 @@ data_set = sm.create(1000, coltypes=col_types.get_coltypes())
 - Add a function for fake categorical variables
 - Add Try Except blocks to all functions to log errors when params passed in dict dont match expected params
 
+
+###Development
+
+```
+$ git clone https://github.com/jbrambleDC/simulacrum.git && cd simulacrum
+$ python setup.py install
+```
+if you want to contribute. Checkout a branch off of master, and open a PR!
