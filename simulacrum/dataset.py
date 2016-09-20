@@ -75,7 +75,12 @@ class DataSet:
         return pd.Series(res)
 
     def coords_data(self, ty, length):
-        pass
+        #TODO: add error handling
+        lat_min = ty['lat_min']
+        lat_max = ty['lat_max']
+        lon_min = ty['lon_min']
+        lon_max = ty['lon_max']
+        return pd.Series(zip(np.random.uniform(lat_min, lat_max, length), np.random.uniform(lat_min, lat_max, length)))
 
     def address_data(self, ty, length):
         res = []
