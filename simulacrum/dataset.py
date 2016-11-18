@@ -1,8 +1,10 @@
 import pandas as pd
 from faker import Faker
+from uuid import uuid4
 import logging
 import numpy as np
 from datetime import datetime
+
 
 class DataSet:
     def __init__(self, length, **kwargs):
@@ -30,7 +32,7 @@ class DataSet:
         return pd.Series(np.random.normal(mean, sd, length))
 
     def exp_data(self, ty, length):
-        B = float(1)/float(ty['lam'])
+        B = float(1) / float(ty['lam'])
         return pd.Series(np.random.exponential(B, length))
 
     def binom_data(self, ty, length):
@@ -64,7 +66,7 @@ class DataSet:
         return pd.Series(res)
 
     def date_data(self, ty, length):
-      #TODO add error handling and validation for date strings passed
+        # TODO add error handling and validation for date strings passed
         res = []
         f = Faker()
         begin = datetime.strptime(ty['begin'], '%Y-%m-%d')
@@ -102,6 +104,35 @@ class DataSet:
             res.append(f.name())
         return pd.Series(res)
 
+    def uuid_data(self, ty, length):
+        """
+        Generate a column of random uuids.
+
+        :param length: The number of uuids.
+        :type length: int.
+        :return: The column on uuids.
+        :rtype: pd.Series
+
+        """
+        return pd.Series(list(map(lambda: uuid4(), range(length))))
+
+    def faker_data(self, ty, length):
+        """
+        Generate a column based on any faker data type.
+
+        :param ty: A configuration for the faker data. Must contain faker provider and related args as dict.
+        :param length: The number of rows wanted.
+        :param ty: dict.
+        :param length: The number of rows wanted.
+        :type length: int.
+        :return: The column on uuids.
+        :rtype: pd.Series
+
+        """
+        provider = ty["provider"]
+        args = ty["args"] if "args" in ty else {}
+        return pd.Series(list(map(lambda: ty[provider](**args), range(length))))
+
     def create(self, length, cols=None, types=None, coltypes=None):
         series_res = {}
         ops = {'num': self.num_data,
@@ -114,7 +145,9 @@ class DataSet:
                'name': self.name_data,
                'addr': self.address_data,
                'zip': self.zip_data,
-               'date': self.date_data}
+               'date': self.date_data,
+               'uuid': self.uuid_data,
+               'faker': self.faker_data}
 
         if cols and types and coltypes:
             logging.error('coltypes should not be defined when cols and types are defined')

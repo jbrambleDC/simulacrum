@@ -2,4 +2,5 @@ build/
 dist/
 simulacram.egg-info/
 simulacrum.egg-info/
+ENV/
 *.pyc
