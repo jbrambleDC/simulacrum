@@ -111,7 +111,7 @@ class DataSet:
 
         :param length: The number of uuids.
         :type length: int.
-        :return: The column on uuids.
+        :return: The column of uuids.
         :rtype: pd.Series
 
         """
@@ -127,7 +127,7 @@ class DataSet:
         :param ty: dict.
         :param length: The number of rows wanted.
         :type length: int.
-        :return: The column on uuids.
+        :return: The column of Faker data.
         :rtype: pd.Series
 
         """
