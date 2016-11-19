@@ -5,7 +5,6 @@
 from uuid import UUID
 from functools import reduce
 
-import simulacrum
 from simulacrum.dataset import DataSet
 
 
