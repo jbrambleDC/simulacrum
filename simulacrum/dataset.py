@@ -131,9 +131,14 @@ class DataSet:
         :rtype: pd.Series
 
         """
-        provider = ty["provider"]
-        del ty["provider"]
-        return pd.Series(list(map(lambda _: getattr(Faker(), provider)(**ty), range(length))))
+        try:
+            provider = ty["provider"]
+            del ty["provider"]
+            return pd.Series(list(map(lambda _: getattr(Faker(), provider)(**ty), range(length))))
+        except KeyError:
+            raise KeyError("You have to define the Faker provider.")
+        except AttributeError:
+            raise AttributeError("Faker().{}() is not a valid Faker provider.".format(provider))
 
     def create(self, length, cols=None, types=None, coltypes=None):
         series_res = {}
