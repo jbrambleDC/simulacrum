@@ -104,7 +104,8 @@ class DataSet:
             res.append(f.name())
         return pd.Series(res)
 
-    def uuid_data(self, ty, length):
+    @staticmethod
+    def uuid_data(ty, length):
         """
         Generate a column of random uuids.
 
@@ -114,9 +115,10 @@ class DataSet:
         :rtype: pd.Series
 
         """
-        return pd.Series(list(map(lambda: uuid4(), range(length))))
+        return pd.Series(list(map(lambda _: uuid4(), range(length))))
 
-    def faker_data(self, ty, length):
+    @staticmethod
+    def faker_data(ty, length):
         """
         Generate a column based on any faker data type.
 
@@ -130,8 +132,8 @@ class DataSet:
 
         """
         provider = ty["provider"]
-        args = ty["args"] if "args" in ty else {}
-        return pd.Series(list(map(lambda: ty[provider](**args), range(length))))
+        del ty["provider"]
+        return pd.Series(list(map(lambda _: getattr(Faker(), provider)(**ty), range(length))))
 
     def create(self, length, cols=None, types=None, coltypes=None):
         series_res = {}
@@ -165,7 +167,12 @@ class DataSet:
         else:
             if not coltypes:
                 logging.error('please define either cols and types or coltypes')
-            for col, typ in coltypes.iteritems():
+            # Assure iteritems compatibility throught 2.7 and 3+
+            try:
+                coltypes_items = coltypes.iteritems()
+            except AttributeError:
+                coltypes_items = coltypes.items()
+            for col, typ in coltypes_items:
                 series_res[col] = ops[typ['type']](typ, length)
 
         return pd.DataFrame(series_res)
