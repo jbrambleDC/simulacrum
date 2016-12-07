@@ -49,10 +49,36 @@ We can also use the ColTypes class to create the coltypes dict with function cal
 import simulacrum as sm
 
 col_types = sm.ColTypes()
+col_types.add_coltype('ids', 'uuids')
+col_types.add_coltype('name', 'name')
 col_types.add_coltype('salaries', 'norm', mean=50000, sd=1000)
-col_types.add_coltype('salaries', 'faker', provider="ipv6")
+col_types.add_coltype('ips', 'faker', provider='ipv6')
 
 data_set = sm.create(1000, coltypes=col_types.get_coltypes())
+```
+
+#### faker type:
+
+If you want to use other data types not allowed in simulacrum by default, you can use the `faker` type to use each data type provided by the awesome faker library.
+
+**List of faker data types : https://faker.readthedocs.io/en/latest/providers.html**
+
+To use the faker type, you have to pass the provider name and optional args like that:
+
+```python
+faker_examples = {
+        # same as fake.simple_profile(sex='F')
+        'names': {'type': 'name', 'provider': 'simple_profile', 'sex': 'F'},
+        # same as fake.ipv6()
+        'ips': {'type': 'faker', 'provider': 'ipv6'},
+        # same as fake.job()
+        'jobs': {'type': 'faker', 'provider': 'job'},
+        # same as fake.pydict(nb_elements=10, variable_nb_elements=True)
+        'metadata': {'type': 'faker', 'provider': 'pydict', 'nb_elements': 10, 'variable_nb_elements': True}
+}
+
+# Or with ColTypes
+col_types.add_coltype('ids', 'faker', provider='pydict', nb_elements=10, variable_nb_elements=True)
 ```
 
 ###TODO
