@@ -2,4 +2,8 @@ build/
 dist/
 simulacram.egg-info/
 simulacrum.egg-info/
+ENV/
+.cache/
+__pycache__/
 *.pyc
+.eggs/
