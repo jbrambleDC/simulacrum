@@ -14,12 +14,14 @@ def _default_test(listToCheck, typeToWait, length):
 
 
 def test_uuid_data():
+    """Test uuid data."""
     uuids_list = DataSet.uuid_data(None, 30)
     assert _default_test(uuids_list, UUID, 30)\
         and len(set(uuids_list)) == len(uuids_list)
 
 
 def test_faker_data_ipv6():
+    """Test faker data."""
     ipv6_list = DataSet.faker_data({
         "provider": "ipv6",
         "network": False

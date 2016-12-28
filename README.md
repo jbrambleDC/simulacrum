@@ -49,7 +49,7 @@ We can also use the ColTypes class to create the coltypes dict with function cal
 import simulacrum as sm
 
 col_types = sm.ColTypes()
-col_types.add_coltype('ids', 'uuids')
+col_types.add_coltype('ids', 'uuid')
 col_types.add_coltype('name', 'name')
 col_types.add_coltype('salaries', 'norm', mean=50000, sd=1000)
 col_types.add_coltype('ips', 'faker', provider='ipv6')

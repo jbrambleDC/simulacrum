@@ -6,3 +6,4 @@ ENV/
 .cache/
 __pycache__/
 *.pyc
+.eggs/

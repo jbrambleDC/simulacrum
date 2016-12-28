@@ -178,6 +178,8 @@ class DataSet:
             except AttributeError:
                 coltypes_items = coltypes.items()
             for col, typ in coltypes_items:
-                series_res[col] = ops[typ['type']](typ, length)
+                data_builder = ops[typ['type']]
+                del typ['type']
+                series_res[col] = data_builder(typ, length)
 
         return pd.DataFrame(series_res)
